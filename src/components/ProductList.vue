@@ -1,26 +1,31 @@
 <template>
-    <div id="Products" style="margin-top: 20px">
-      <h1>{{title}}</h1>
-        <b-card-group style="margin: 20px; padding:10px" deck>
-          <button v-for= "Product in Products" :key="Product.key"  style="margin: 20px; padding:10px" >
-            <b-card :title= Product.title
-            :img-src= Product.url
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem; border: hidden"
-            class="mb-2">
-            <span>{{Product.price}}</span>
-            </b-card>
-          </button>
-        </b-card-group>
-    </div>
+  <div class="item">
+    <p>{{ item.name }}</p>
+    <span class="salepill" v-if="item.sale">Sale</span>
+    <img :src="`/assets/sp/${item.index}/${item.img}`" :alt="`Image of ${item.name}` " height="150" width="200">
+    <p>{{ item.price }}$</p>
+    <b-button size="sm" variant="outline-primary" @click="addItem">Add Item</b-button>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
- props:['Products', 'title'],
+  name: 'item',
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    addItem() {
+      this.$store.commit('addItem', this.item);
+    }
+  },
   data () {
     return {
     }
@@ -28,16 +33,35 @@ export default {
 }
 </script>
 <style scoped>
-button {
-  border: hidden;
-  border-radius: 15;
-  padding:10px;
-  background: inherit;
+.item {
+  border-radius: 1px;
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-button:hover {
-  border: groove;
-  background: inherit;
-  width: 300px;
-  height: 350px;
+.item:hover{
+  border:groove;
+}
+
+.salepill {
+  background: rgb(232, 35, 25);
+  color: white;
+  font-family: 'Barlow', sans-serif;
+  position: absolute;
+  right: 30px;
+  top: 60px;
+  padding: 2px 10px 4px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 1000px;
+}
+
+p {
+  font-size: 18px;
 }
 </style>
