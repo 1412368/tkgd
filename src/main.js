@@ -184,6 +184,86 @@ const store = new Vuex.Store({
           img: 'main.jpg',
           index:'17',
         },
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'18',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'19',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'20',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'21',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'22',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'23',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'24',
+        },
+
+        {
+          name: 'Kid Cloth',
+          price: 59.99,
+          category: 'men',
+          sale: true,
+          article: 'cloth',
+          img: 'main.jpg',
+          index:'25',
+        },
+
 
       ]
     },

@@ -1,30 +1,22 @@
 <template>
   <div class="home">
     <div>
-      <Slider/>
-      <app-sidebar :pricerange.sync="highprice"/>
-      <h4 class="categoryTitle"> Cloth</h4>
+      <h4 class="categoryTitle"> {{category}}</h4>
       <div class="category">
         <transition-group name="items" tag="section" class="content">
           <ProductList 
-            v-for="(item, index) in products"
+            v-for="(item, index) in showingProduct"
             :key="item.index"
             :item="item"
             :index="index"
           />
         </transition-group>
       </div>
-      <h4 class="categoryTitle"> Phone</h4>
-      <div class="category">
-        <transition-group name="items" tag="section" class="content">
-          <ProductList 
-            v-for="(item, index) in products"
-            :key="item.index"
-            :item="item"
-            :index="index"
-          />
-        </transition-group>
+      <div v-if="totalPage==0">
+          No product for this categories
       </div>
+    <b-pagination-nav align="right" :number-of-pages="totalPage" :base-url="`#/categories/${category}/`" v-model="currentPage" />
+
     <app-footer class="footer" />
     </div>
   </div>
@@ -32,25 +24,30 @@
 
 <script>
 import ProductList from './ProductList'
-import Slider from './HomeSlider'
 import AppFooter from './../components/Footer.vue';
-import AppSidebar from './../components/AppSidebar.vue';
 
 export default {
   name: 'home',
-  components: {  Slider, ProductList, AppFooter, AppSidebar },
-   data() {
+  components: {ProductList, AppFooter },
+  computed: {    
+    totalPage() {
+      return Math.ceil(this.$store.state.products.filter(el =>
+        el.article==this.$route.params.category
+      ).length/10);
+    },
+    showingProduct(){
+        return this.$store.state.products.filter(el =>
+        el.article==this.$route.params.category
+        ).splice((this.$route.params.currentPage-1)*10,this.$route.params.currentPage*10);
+    }
+  },
+  data() {
     return {
-      highprice: 300
+        currentPage: this.$route.params.currentPage,
+        category: this.$route.params.category,        
     };
   },
-  computed: {    
-    products() {
-      return this.$store.state.products.filter(el =>
-        el.article=='cloth'
-      );
-    }
-  }
+
 }
 </script>
 

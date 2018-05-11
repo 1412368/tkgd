@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Products from '@/components/ProductDisplay'
 import Carts from '@/components/Cart'
+import Categories from '@/components/Categories'
+
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +24,11 @@ export default new Router({
       path:'/cart',
       name: 'carts',
       component: Carts,
+    },
+    {
+      path:'/categories/:category/:currentPage',
+      name: 'category',
+      component: Categories,
     }
   ]
 })
