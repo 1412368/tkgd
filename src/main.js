@@ -33,6 +33,27 @@ const store = new Vuex.Store({
       cartTotal: 0,
       cart: {},
       sale: false,
+      isLogin:false,
+      userData: {
+        // _id : '',
+        username: 'admin',
+        password: '12345678a',
+        email: 'hieunhan3128@gmail.com',
+        address: '72 Cộng hòa',
+        birthday: '',
+        gender:'',
+        phone:'0917453360',
+      },
+      formData: {
+        _id : '',
+        username: '',
+        password: '',
+        email: '',
+        address: '',
+        birthday: '',
+        gender:'',
+        phone:'',
+      },
       products: [
         {
           name: 'Khaki Suede Polish Work Boots',
@@ -656,6 +677,7 @@ const store = new Vuex.Store({
       },
       clearCartCount: state => {
         state.cartTotal = 0;
+        state.cart={};
       },
       clearCartContents: state => {
         state.cart = {};

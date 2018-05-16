@@ -8,20 +8,20 @@
       <b-collapse is-nav id="nav_collapse">
 
         <b-navbar-nav>
-          <b-nav-item href="/">Home</b-nav-item>
-          <b-nav-item href="#/Products">Product</b-nav-item>
+          <b-nav-item href="#/">Home</b-nav-item>
         </b-navbar-nav> 
 
         <!-- Right aligned nav items -->
          <b-navbar-nav class="ml-auto">
-
            <b-nav-item-dropdown right>  
             <!-- Using button-content slot -->
              <template slot="button-content">
               <em><i class="material-icons" >person</i></em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Signout</b-dropdown-item>
+            <b-dropdown-item v-if='isLogin' href="#/account">Xem tài khoản</b-dropdown-item>
+            <b-dropdown-item v-if='isLogin' @click="logout">Đăng xuất</b-dropdown-item>
+            <b-dropdown-item v-if='!isLogin' @click="loginDialog=true" >Đăng nhập</b-dropdown-item>
+            <b-dropdown-item v-if='!isLogin' href="#/login">Đăng kí</b-dropdown-item>
           </b-nav-item-dropdown>
 
           <b-navbar-nav> 
@@ -43,6 +43,25 @@
 
       </b-collapse>
     </b-navbar> 
+  <el-dialog
+    title="Đăng nhập"
+    :visible.sync="loginDialog"
+    width="50%"
+    center>
+    <el-form :model='formData' ref="form" label-width="150px" label-position="right">
+      <el-form-item label="Họ và tên">
+          <el-input v-model='formData.username'> </el-input>
+      </el-form-item>
+      <el-form-item label="Mật khẩu" prop="pass">
+          <el-input type="password" v-model='formData.password'></el-input>
+      </el-form-item>
+     </el-form>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="loginDialog = false">Hủy</el-button>
+      <el-button type="primary" @click="login">Đăng nhập</el-button>
+    </span>
+  </el-dialog>
+
   <!-- <el-menu
   :default-active="activeIndex2"
   class="el-menu-demo"
@@ -76,8 +95,53 @@ export default {
   computed: {
     cartTotal() {
       return this.$store.state.cartTotal;
+    },
+    isLogin(){
+      return this.$store.state.isLogin;
+    },
+    user(){
+      return this.$store.state.userData;
     }
   },
+  data(){
+    return {
+      formData: {
+          _id : '',
+          username: '',
+          password: '',
+      },
+      loginDialog:false,
+    }
+  },
+  methods:{
+    login(){
+      let flag= (this.user.username===this.formData.username)&&(this.user.password===this.formData.password)
+      if(flag){
+        this.$notify({
+          title: 'Đăng nhập thành công',
+          type: 'success'
+        });
+        this.loginDialog = false;
+        this.$store.state.isLogin=true;
+      }
+      else{
+        this.$notify({
+          title: 'Đăng nhập thất bại',
+          message: 'Mời bạn kiểm tra lại tên đăng nhập và mật khẩu',
+          type: 'Warning'
+        });
+      }
+
+    },
+    logout(){
+      this.$store.state.isLogin=false;
+      this.$notify({
+        title: 'Bạn đã đăng xuất',
+        type: 'success'
+      });
+
+    }
+  }
 }
 </script>
 <style scoped>
@@ -95,5 +159,7 @@ export default {
   border-radius: 1000px;
   font-weight: 700;
 }
-
+.dialog-footer{
+  margin-left: 450px;
+}
 </style>

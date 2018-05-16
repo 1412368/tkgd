@@ -29,9 +29,7 @@
       <app-success @restartCart="success = false"/>
       <h2>Success!</h2>
       <p>Your order has been processed, it will be delivered shortly.</p>
-      <router-link to="/"> 
-        <b-button size="sm" variant="primary">Back to shopping</b-button>
-      </router-link>
+      <b-button size="sm" variant="primary" @click="Buy">Back to shopping</b-button>
     </div>
 
   </div>
@@ -78,8 +76,15 @@ export default {
       return `$${value}`;
     }
   },
-  methods: {
+    methods: {
+    Buy(){
+      this.status = 'success';
+      this.$emit('successSubmit');
+      this.$store.commit('clearCartCount');
+      this.$router.push('/');
+    },
   }
+
 };
 </script>
 

@@ -5,6 +5,9 @@ import Products from '@/components/ProductDisplay'
 import Carts from '@/components/Cart'
 import Categories from '@/components/Categories'
 import ProductDetails from  '@/components/ProductDetails'
+import login from '@/components/login'
+import AccountInfo from '@/components/AccountInfo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +37,16 @@ export default new Router({
       path:'/product/:id',
       name: 'product',
       component: ProductDetails,
+    },
+    {
+      path:'/login',
+      name:'login',
+      component: login
+    },
+    {
+      path:'/account',
+      name:'account',
+      component: AccountInfo
     }
   ]
 })

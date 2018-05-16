@@ -11,7 +11,7 @@
                         required
                         placeholder="116 Nguyễn Chí Thanh">
           </b-form-input>
-          <b-button type="submit" variant="primary" style="margin-top:10px">Xác nhận</b-button>
+          <b-button type="submit" variant="primary" style="margin-top:10px" @click="Buy">Xác nhận</b-button>
         </b-form>
       </div>
 
@@ -30,6 +30,19 @@
 
 <script>
 export default {
+    computed:{
+      userData(){
+        return this.$store.state.userData;
+      },
+      isLogin(){
+        return this.$store.state.isLogin;
+      }
+  },
+  created() {
+    if (this.isLogin)
+      this.name= this.userData.address;
+},
+
   props: {
     total: {
       type: [Number, String],
@@ -59,6 +72,7 @@ export default {
       this.status = 'success';
       this.$emit('successSubmit');
       this.$store.commit('clearCartCount');
+      this.clearCart();
     },
     clearCart() {
       this.submitted = false;

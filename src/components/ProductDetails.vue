@@ -64,12 +64,13 @@ export default {
         return parseInt(this.$route.params.id);
     },
     item() {
-      return this.$store.state.products[parseInt(this.$route.params.id)];
+      return this.$store.state.products[parseInt(this.$route.params.id)-1];
     }
   },
   methods: {
     addItem() {
-        console.log(this.$route.params.id);
+        console.log(this.index);
+        console.log(this.item);
         for(let i=0;i<this.num1;i++)
             this.$store.commit('addItem', this.item);
     }
