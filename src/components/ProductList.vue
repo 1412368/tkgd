@@ -1,10 +1,13 @@
 <template>
   <div class="item">
-    <p>{{ item.name }}</p>
-    <span class="salepill" v-if="item.sale">Sale</span>
-    <img :src="`/assets/sp/${item.index}/${item.img}`" :alt="`Image of ${item.name}` " height="150" width="200">
-    <p>{{ item.price }}$</p>
+    <router-link :to="`/product/${item.index}`">
+      <p>{{ item.name }}</p>
+      <span class="salepill" v-if="item.sale">Sale</span>
+      <img :src="`/assets/sp/${item.index}/${item.img}`" :alt="`Image of ${item.name}` " height="100" width="150">
+      <p>{{ item.price }}$</p>
+    </router-link>
     <b-button size="sm" variant="outline-primary" @click="addItem">Add Item</b-button>
+
   </div>
 </template>
 

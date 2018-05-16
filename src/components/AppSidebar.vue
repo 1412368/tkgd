@@ -1,10 +1,60 @@
 <template>
-    <div class="list-group">
+    <!-- <div class="list-group">
+      <h10>Danh mục sản phẩm</h10>
       <a href="#/categories/cloth/1" class="list-group-item list-group-item-action">Cloth</a>
       <a href="#/categories/jewelry/1" class="list-group-item list-group-item-action">Jewelry</a>
       <a href="#/categories/shoe/1" class="list-group-item list-group-item-action">Shoe</a>
       <a href="#/categories/watch/1" class="list-group-item list-group-item-action disabled">Watch</a>
-    </div>
+    </div> -->
+  <el-menu
+    router=true,
+    class="el-menu-vertical"
+    @open="handleOpen"
+    @close="handleClose"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b">
+    <el-submenu index="1">
+      <template slot="title">
+        <i class="el-icon-location"></i>
+        <span>Nhóm hàng một</span>
+      </template>
+      <el-menu-item index="/categories/cloth/1">Cloth</el-menu-item>
+      <el-menu-item index="/categories/jewelry/1">Jewelry</el-menu-item>
+      <el-menu-item index="/categories/shoe/1">Shoe</el-menu-item>
+      <el-menu-item index="/categories/watch/1">Watch</el-menu-item>
+    </el-submenu>
+     <el-submenu index="2">
+      <template slot="title">
+        <i class="el-icon-menu"></i>
+        <span>Nhóm hàng hai</span>
+      </template>
+      <el-menu-item index="/categories/cloth/1">Cloth</el-menu-item>
+      <el-menu-item index="/categories/jewelry/1">Jewelry</el-menu-item>
+      <el-menu-item index="/categories/shoe/1">Shoe</el-menu-item>
+      <el-menu-item index="/categories/watch/1">Watch</el-menu-item>
+    </el-submenu>
+    <el-submenu index="3">
+      <template slot="title"> 
+        <i class="el-icon-document"></i>
+        <span>Nhóm hàng ba</span>
+      </template>
+      <el-menu-item index="/categories/cloth/1">Cloth</el-menu-item>
+      <el-menu-item index="/categories/jewelry/1">Jewelry</el-menu-item>
+      <el-menu-item index="/categories/shoe/1">Shoe</el-menu-item>
+      <el-menu-item index="/categories/watch/1">Watch</el-menu-item>
+    </el-submenu>
+    <el-submenu index="4">
+      <template slot="title">
+        <i class="el-icon-document"></i>
+        <span>Nhóm hàng bốn</span>
+      </template>
+      <el-menu-item index="/categories/cloth/1">Cloth</el-menu-item>
+      <el-menu-item index="/categories/jewelry/1">Jewelry</el-menu-item>
+      <el-menu-item index="/categories/shoe/1">Shoe</el-menu-item>
+      <el-menu-item index="/categories/watch/1">Watch</el-menu-item>
+    </el-submenu>
+  </el-menu>
 </template>
 
 <script>
@@ -30,61 +80,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-aside {
-  background: white;
-  float: left;
-  padding: 20px;
-  margin-right: 10px;
-  margin-top:57px;
-  height:2000px;
-}
-.list-group{
-  float:left;
-  padding: 20px;
-  margin-right: 10px;
-  margin-top:57px;
-  height:2000px;
-  width: 250px;
-}
-.sidearea {
-  border-bottom: 1px solid #ccc;
+.el-menu-vertical{
+  margin-top:20px;
   text-align: left;
-}
-
-.callout {
-  padding: 20px 0;
-}
-
-label {
-  font-family: 'Playfair Display', serif;
-  padding: 15px 0;
-  text-align: center;
-}
-
-/*--input range--*/
-.sidearea:first-of-type {
-  padding-bottom: 40px;
-}
-
-label {
-  font-family: 'Playfair Display', serif;
-  padding: 15px 0;
-  text-align: center;
-}
-
-span {
-  font-family: 'Barlow', sans-serif;
-}
-
-.max {
-  font-size: 12px;
-  float: right;
-  color: #565656;
-}
-
-.min {
-  float: left;
-  font-size: 12px;
-  color: #565656;
 }
 </style>

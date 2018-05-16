@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Products from '@/components/ProductDisplay'
 import Carts from '@/components/Cart'
 import Categories from '@/components/Categories'
-
+import ProductDetails from  '@/components/ProductDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +29,11 @@ export default new Router({
       path:'/categories/:category/:currentPage',
       name: 'category',
       component: Categories,
+    },
+    {
+      path:'/product/:id',
+      name: 'product',
+      component: ProductDetails,
     }
   ]
 })

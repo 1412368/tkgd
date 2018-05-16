@@ -2,7 +2,6 @@
   <div class="home">
     <div>
       <Slider/>
-      <app-sidebar :pricerange.sync="highprice"/>
       <h4 class="categoryTitle"> Cloth</h4>
       <div class="category">
         <transition-group name="items" tag="section" class="content">
@@ -25,7 +24,6 @@
           />
         </transition-group>
       </div>
-    <app-footer class="footer" />
     </div>
   </div>
 </template>
@@ -33,12 +31,10 @@
 <script>
 import ProductList from './ProductList'
 import Slider from './HomeSlider'
-import AppFooter from './../components/Footer.vue';
-import AppSidebar from './../components/AppSidebar.vue';
 
 export default {
   name: 'home',
-  components: {  Slider, ProductList, AppFooter, AppSidebar },
+  components: {  Slider, ProductList },
    data() {
     return {
       highprice: 300

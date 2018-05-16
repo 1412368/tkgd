@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div>
-      <h4 class="categoryTitle"> {{category}}</h4>
+      <h4 class="categoryTitle"> {{this.$route.params.category}}</h4>
       <div class="category">
         <transition-group name="items" tag="section" class="content">
           <ProductList 
@@ -12,12 +12,11 @@
           />
         </transition-group>
       </div>
-      <div v-if="totalPage==0">
+      <div class="empty" v-if="totalPage==0">
           No product for this categories
       </div>
-    <b-pagination-nav align="right" :number-of-pages="totalPage" :base-url="`#/categories/${category}/`" v-model="currentPage" />
+    <b-pagination-nav v-if="totalPage!=0" align="right" :number-of-pages="totalPage" :base-url="`#/categories/${category}/`" v-model="currentPage" />
 
-    <app-footer class="footer" />
     </div>
   </div>
 </template>
@@ -25,10 +24,11 @@
 <script>
 import ProductList from './ProductList'
 import AppFooter from './../components/Footer.vue';
+import AppSidebar from './../components/AppSidebar.vue';
 
 export default {
   name: 'home',
-  components: {ProductList, AppFooter },
+  components: {ProductList, AppFooter, AppSidebar },
   computed: {    
     totalPage() {
       return Math.ceil(this.$store.state.products.filter(el =>
@@ -39,12 +39,16 @@ export default {
         return this.$store.state.products.filter(el =>
         el.article==this.$route.params.category
         ).splice((this.$route.params.currentPage-1)*10,this.$route.params.currentPage*10);
+    },
+    category(){
+      return this.$route.params.category;      
+
     }
+    
   },
   data() {
     return {
         currentPage: this.$route.params.currentPage,
-        category: this.$route.params.category,        
     };
   },
 
@@ -53,29 +57,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.empty{
+  background:white;
+  width: 100%;
+  height:400px;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-/* no grid support */
-aside {
-  float: left;
-  width: 19.1489%;
-}
-
 .content {
   /*no grid support*/
   /* grid */

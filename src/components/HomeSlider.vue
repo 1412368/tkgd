@@ -1,18 +1,9 @@
 <template>  
-  <b-carousel id="carousel1"
-    style="text-shadow: 1px 1px 2px #333;"
-    controls
-    background="#ababab"
-    :interval="4000"
-    img-width="1024"
-    img-height="480"
-    v-model="slide"
-    @sliding-start="onSlideStart"
-    @sliding-end="onSlideEnd"
-  >
-    <b-carousel-slide v-for= "PromoProduct in PromoProducts" :key="PromoProduct.id" :img-src=PromoProduct.url>
-    </b-carousel-slide>
-  </b-carousel>
+  <el-carousel height="150px">
+    <el-carousel-item v-for="item in PromoProducts" :key="item.url">
+      <img :src='item.url'>
+    </el-carousel-item>
+  </el-carousel>
 </template>
 
 <script >
@@ -34,4 +25,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

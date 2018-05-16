@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <b-navbar toggleable="md" type="dark" variant="dark" >
+     <b-navbar toggleable="md" type="dark" variant="dark" >
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
       <b-navbar-brand href="#">BRAND</b-navbar-brand>
@@ -10,23 +10,23 @@
         <b-navbar-nav>
           <b-nav-item href="/">Home</b-nav-item>
           <b-nav-item href="#/Products">Product</b-nav-item>
-        </b-navbar-nav>
+        </b-navbar-nav> 
 
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
+         <b-navbar-nav class="ml-auto">
 
-          <b-nav-item-dropdown right>
+           <b-nav-item-dropdown right>  
             <!-- Using button-content slot -->
-            <template slot="button-content">
+             <template slot="button-content">
               <em><i class="material-icons" >person</i></em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
             <b-dropdown-item href="#">Signout</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-navbar-nav>
+          <b-navbar-nav> 
             <!-- Using button-content slot -->
-            <router-link to="/cart">
+             <router-link to="/cart">
               <div class="cartitem">
                 <div v-if="cartTotal > 0" class="cartcount">{{ cartTotal }}</div>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-labelledby="shopicon" role="presentation" width="30" height="30">
@@ -42,8 +42,34 @@
         </b-navbar-nav>
 
       </b-collapse>
-    </b-navbar>
+    </b-navbar> 
+  <!-- <el-menu
+  :default-active="activeIndex2"
+  class="el-menu-demo"
+  mode="horizontal"
+  @select="handleSelect"
+  background-color="#545c64"
+  text-color="#fff"
+  active-text-color="#ffd04b">
+  <el-menu-item index="1">LOGO</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">Workspace</template>
+    <el-menu-item index="2-1">item one</el-menu-item>
+    <el-menu-item index="2-2">item two</el-menu-item>
+    <el-menu-item index="2-3">item three</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">item four</template>
+      <el-menu-item index="2-4-1">item one</el-menu-item>
+      <el-menu-item index="2-4-2">item two</el-menu-item>
+      <el-menu-item index="2-4-3">item three</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" disabled>Info</el-menu-item>
+  <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item>
+</el-menu> -->
+
   </div>
+
 </template>
 <script>
 export default {
